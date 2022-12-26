@@ -45,7 +45,7 @@ sign:
 
 upload:
 	@echo "$(arrow)$(green)Uploading ${APP}$(end)"
-	@ssh -p $(PORT) $(ADDR) "rm $(UPLOAD_DIR)/$(APP)"
+	-@ssh -p $(PORT) $(ADDR) "rm $(UPLOAD_DIR)/$(APP)"
 	@scp -P $(PORT) ${APP} ${ADDR}:${UPLOAD_DIR}
 	@$(CHECK_TC) scp -P $(PORT) $(APP).tc $(ADDR):/tmp
 
