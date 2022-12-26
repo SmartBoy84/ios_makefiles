@@ -56,7 +56,7 @@ upload:
 
 run:
 	@echo "$(arrow)$(green)Running ${APP}$(red)"
-	-@$(CHECK_TC) -ssh -p $(PORT) $(ADDR) "/.Fugu14Untether/jailbreakd loadTC /tmp/$(APP).tc"
+	-@$(CHECK_TC) ssh -p $(PORT) $(ADDR) "/.Fugu14Untether/jailbreakd loadTC /tmp/$(APP).tc"
 	@echo ""
 	@ssh -p $(PORT) $(ADDR) "$(UPLOAD_DIR)/${APP}"
 
