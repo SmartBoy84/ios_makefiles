@@ -4,23 +4,27 @@ APP:=bobbi
 ENT:=
 
 # comment out the following to prevent trustcache injection
-#TRUSTCACHE:=$(APP).tc
+TRUSTCACHE:=$(APP).tc
 
 IP:=le-carote
 ADDR:=root@$(IP)
 PORT:=22
-UPLOAD_DIR:=/
+UPLOAD_DIR:=/User/Downloads
 
 ARCH=arm64
 OS=14.4
 
 # clang shizzle
-CLANG_CUSTOM:=-isysroot /home/hamdan/iOS/Theos/sdks/iPhoneOS14.5.sdk -target $(ARCH)-apple-ios$(OS)
+CLANG_FLAGS:=
+SDK:=$(THEOS)/sdks/iPhoneOS14.5.sdk
 
 # go compiler arguments
-GO_CUSTOM:=CGO_ENABLED=1 GOARCH=$(ARCH) GOOS=ios
+GO_FLAGS:=
 
 # main c compilation
+GO_CUSTOM:=CGO_ENABLED=1 GOARCH=$(ARCH) GOOS=ios $(GO_FLAGS)
+CLANG_CUSTOM:=-isysroot $(SDK) -target $(ARCH)-apple-ios$(OS) $(CLANG_FLAGS)
+
 CC:=$(TOOLCHAIN)/clang $(CLANG_CUSTOM)
 
 # end of configurable variables
