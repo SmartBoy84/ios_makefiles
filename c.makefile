@@ -26,7 +26,7 @@ arrow=$(red)=> $(end)
 MUTE= 2>/dev/null; true
 
 RERUN=$(MAKE) --no-print-directory
-CHECK_TC=@[ -z $(TRUSTCACHE) ] ||
+CHECK_TC=[ -z $(TRUSTCACHE) ] ||
 
 FLAGS=$(INCLUDE) $(ARCH) $(CUSTOM)
 
@@ -45,7 +45,6 @@ sign:
 
 upload:
 	@echo "$(arrow)$(green)Uploading ${APP}$(end)"
-#-@ssh -p $(PORT) $(ADDR) "rm $(UPLOAD_DIR)/$(APP)"
 	@scp -P $(PORT) ${APP} ${ADDR}:${UPLOAD_DIR}
 	@$(CHECK_TC) scp -P $(PORT) $(APP).tc $(ADDR):/tmp
 

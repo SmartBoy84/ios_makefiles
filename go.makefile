@@ -32,7 +32,7 @@ arrow=$(red)=> $(end)
 MUTE= 2>/dev/null; true
 
 RERUN=$(MAKE) --no-print-directory
-CHECK_TC=@[ -z $(TRUSTCACHE) ] ||
+CHECK_TC=[ -z $(TRUSTCACHE) ] ||
 
 FLAGS=$(INCLUDE) $(ARCH) $(CUSTOM)
 
@@ -57,8 +57,8 @@ upload:
 run:
 	@echo "$(arrow)$(green)Running ${APP}$(red)"
 	-@$(CHECK_TC) -ssh -p $(PORT) $(ADDR) "/.Fugu14Untether/jailbreakd loadTC /tmp/$(APP).tc"
-	echo ""
-	ssh -p $(PORT) $(ADDR) "$(UPLOAD_DIR)/${APP}"
+	@echo ""
+	@ssh -p $(PORT) $(ADDR) "$(UPLOAD_DIR)/${APP}"
 
 clean:
 	@echo "$(arrow)$(green)Cleaning up!$(end)"
