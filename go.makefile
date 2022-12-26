@@ -1,14 +1,14 @@
 TOOLCHAIN:=$(DIYCOMPILE)/toolchain/linux/iphone/bin
 
-APP:=writexe
+APP:=bobbi
 ENT:=
 
 # comment out the following to prevent trustcache injection
-TRUSTCACHE:=$(APP).tc
+#TRUSTCACHE:=$(APP).tc
 
 IP:=le-carote
 ADDR:=root@$(IP)
-PORT:=44
+PORT:=22
 UPLOAD_DIR:=/
 
 ARCH=arm64
@@ -51,6 +51,7 @@ sign:
 
 upload:
 	@echo "$(arrow)$(green)Uploading ${APP}$(end)"
+	@ssh -p $(PORT) $(ADDR) "rm $(UPLOAD_DIR)/$(APP)"
 	@scp -P $(PORT) ${APP} ${ADDR}:${UPLOAD_DIR}
 	@$(CHECK_TC) scp -P $(PORT) $(APP).tc $(ADDR):/tmp
 
