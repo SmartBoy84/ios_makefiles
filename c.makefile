@@ -49,7 +49,7 @@ upload:
 	@$(CHECK_TC) scp -P $(PORT) $(APP).tc $(ADDR):/tmp
 
 run:
-	@echo "$(arrow)$(green)Running ${APP}$(red)"
+	@echo "$(arrow)$(green)Running ${APP}$(red)$(end)"
 	-@$(CHECK_TC) ssh -p $(PORT) $(ADDR) "/.Fugu14Untether/jailbreakd loadTC /tmp/$(APP).tc"
 	@echo ""
 	@ssh -p $(PORT) $(ADDR) "$(UPLOAD_DIR)/${APP}"
