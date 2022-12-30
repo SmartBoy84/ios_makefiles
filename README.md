@@ -1,5 +1,5 @@
 # ARCHIVED
-In favour of my (nearly) fully-featured custom (make system)[https://github.com/SmartBoy84/DiyCompile]
+In favour of my (nearly) fully-featured custom [make system](https://github.com/SmartBoy84/DiyCompile)
 
 # iOS-Makefiles
 Custom makefiles for whatever programming language strikes my fancy
